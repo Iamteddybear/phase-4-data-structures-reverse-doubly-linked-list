@@ -9,6 +9,20 @@ class LinkedList
   end
 
   def reverse!
-    # your code here
+  return if head.nil? || head.next_node.nil?
+
+    current = head
+    prev = nil
+
+    while current
+      next_node = current.next_node
+      current.next_node = prev
+      current.prev_node = next_node
+
+      prev = current
+      current = next_node
+    end
+
+    self.head, self.tail = tail, head
   end
 end
